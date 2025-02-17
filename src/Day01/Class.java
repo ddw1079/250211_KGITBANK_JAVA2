@@ -143,6 +143,7 @@ public class Class {
 		scanner.nextLine();
 		
 		System.out.println("EFGH");
+		scanner.close();
 	}
 }
 
