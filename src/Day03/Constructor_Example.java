@@ -232,6 +232,7 @@ public class Constructor_Example {
                 case 0:
                     System.out.println("---- 에어컨 설정 프로그램을 종료합니다.");
                     select = 0;
+                    sc.close();
                     break;
                 default:
                     System.out.println("잘못된 값을 입력받았습니다. 다시 시도해주십시오.");

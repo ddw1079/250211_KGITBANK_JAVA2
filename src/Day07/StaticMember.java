@@ -16,8 +16,14 @@ package Day07;
 // 
 //      |     Stack       |                 Heap                 |       Method      |
 // -----|-----------------------------------------------------------------------------
-// main |      p1         |  name("철수"),age(24),popularity->    |static popularity()|
-//      |      p2         |  name("영희"),age(23),popularity┘     |                   |
+// main |      p1         |  name("철수"),age(24),popularity-->   |static popularity()|
+//      |      p2         |  name("영희"),age(23),popularity-┘    |                   |
+// 
+//  - 물론 객체의 이름으로도 접근할 수 있지만 이러한 방법을 사용할 경우 static-warning 경고 발생함.
+//  = 객체의 이름으로 접근해서 사용해도 문제는 없지만, 이러한 방법을 사용할 경우 객체가 선언되지 않은 경우(Null)에는 사용할 수 없고,
+//    또한 코드의 일관성을 해칠 수 있음. 
+//  ∴ 따라서 객체의 이름으로 접근하는 방법은 지양되어야 함.
+//     보통의 경우에는 Private로 묶여있어 Getter나 Setter 를 거쳐 사용하는 방식을 사용함.
 // 
 
 // ---- Static 메소드 ----
@@ -66,6 +72,11 @@ class Person {
             System.out.println("name: " + name);
             System.out.println("age: " + age);
         }
+
+        // Getter
+        public int _getPopularity() {
+            return popularity;
+        }
     }
         
     public class StaticMember {
@@ -74,9 +85,11 @@ class Person {
             Person p1 = new Person("철수", 24);
             Person p2 = new Person("영희", 23);
             Person p3 = new Person("바둑이", 3);
+
+            
     
             System.out.println("현재 인원: " + Person.getPopularity());
-        // System.out.println("현재 인원: " + p1.popularity); // <-- 이 접근법도 가능하긴 하지만 static-access warning 발생.
-
+            // System.out.println("현재 인원: " + p1._getPopularity()); // <-- 이 접근법도 가능하긴 하지만 static-access warning 발생.
+            //                                                         //  └- 코드의 일관성을 위해서라도 이러한 방법은 지양되어야 함.
     }
 }

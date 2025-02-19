@@ -86,6 +86,7 @@ public class classQuiz {
 		Scanner scanner = new Scanner(System.in);
 		TV tv = new TV();
 		int select, channel;
+		boolean isEnd = false;
 		
 		while (true)
 		{
@@ -97,6 +98,7 @@ public class classQuiz {
 			System.out.println("4. 볼륨 증가");
 			System.out.println("5. 볼륨 감소");
 			System.out.println("6. 현재 정보");
+			System.out.println("7. 종료");
 			System.out.print("입력: ");
 			select = scanner.nextInt();
 			System.out.println();
@@ -128,10 +130,18 @@ public class classQuiz {
 			case 6:
 				tv.showInfo();
 				break;
+			default:
+				isEnd = true;
+				break;
 			}
+
 			System.out.println("Press Enter to continue....");
 			scanner.nextLine();
 			scanner.nextLine();
+			if(isEnd) {
+				scanner.close();
+				break;
+			}
 		}
 	}
 }

@@ -12,18 +12,20 @@ import java.util.Scanner;
 // 3. 총 인원, 고용 비용 계산
 
 class Employee {
-    String name;
-    int age;
-    int salary;
-    static int employeeCount;
-    static int sumSalary;
+    private String name;
+    private int age;
+    private int salary;
+    private static int employeeCount;
+    private static int sumSalary;
 
+    // Class Static
     static {
         System.out.println("Employee Management System Loading...");
         employeeCount = 0;
         sumSalary = 0;
     }
 
+    // Constructor
     Employee(String name, int age, int salary) {
         this.name = name;
         this.age = age;
@@ -31,6 +33,24 @@ class Employee {
         Employee.employeeCount++;
         Employee.sumSalary += salary;
     }
+
+    // Getter
+    public static int getEmployeeCount() {
+        return Employee.employeeCount;
+    }
+    public static int getSumSalary() {
+        return Employee.sumSalary;
+    }
+    public String getName() {
+        return this.name;
+    }
+    public int getAge() {
+        return this.age;
+    }
+    public int getSalary() {
+        return this.salary;
+    }
+
 }
 
 
@@ -62,6 +82,15 @@ public class StaticMember_Practice {
         sc.nextLine();
         sc.nextLine();
     }
+
+    static void printMsg(String printMsg) {
+        System.out.println(printMsg);
+    }
+
+    static void garbageCollect() {
+        System.gc();
+    }
+
     public static void main(String[] args) {
         Employee[] employees = new Employee[100];
         int select, age, salary;
@@ -77,6 +106,11 @@ public class StaticMember_Practice {
                     clearConsole();
                     System.out.println(headerString);
                     System.out.println("직원을 고용합니다.");
+                    if(100<Employee.getEmployeeCount()) {
+                        printMsg("고용 가능한 직원 수 한계에 도달하여 더 이상 고용할 수 없습니다.");
+                        printMsg("메인 메뉴로 돌아갑니다.");
+                        break;
+                    }
                     
                     System.out.print("이름: ");
                     name = sc.next();
@@ -85,9 +119,9 @@ public class StaticMember_Practice {
                     System.out.print("급여: ");
                     salary = sc.nextInt();
                     
-                    employees[Employee.employeeCount] = new Employee(name, age, salary);
-                    pauseSystem(sc);
+                    employees[Employee.getEmployeeCount()] = new Employee(name, age, salary);
                     break;
+
                 case 2:
                     clearConsole();
                     System.out.println(headerString);
@@ -96,22 +130,21 @@ public class StaticMember_Practice {
                         if(employee == null) {
                             break;
                         }
-                        System.out.println("이름: " + employee.name);
-                        System.out.println("나이: " + employee.age);
-                        System.out.println("급여: " + employee.salary);
+                        System.out.println("이름: " + employee.getName());
+                        System.out.println("나이: " + employee.getAge());
+                        System.out.println("급여: " + employee.getSalary());
                         System.out.println();
                     }
-                    pauseSystem(sc);
-
                     break;
+
                 case 3:
                     clearConsole();
                     System.out.println(headerString);
                     System.out.println("총 고용 비용 계산");
-                    System.out.println("현재 총 " + Employee.employeeCount + "명 만큼 고용하였으며,");
-                    System.out.println("총 고용 비용은 " + Employee.sumSalary + " 만원 입니다.");
-                    pauseSystem(sc);
+                    System.out.println("현재 총 " + Employee.getEmployeeCount() + "명 만큼 고용하였으며,");
+                    System.out.println("총 고용 비용은 " + Employee.getSumSalary() + " 만원 입니다.");
                     break;
+
                 case 4:
                     clearConsole();
                     System.out.println(headerString);
@@ -121,7 +154,7 @@ public class StaticMember_Practice {
                 default:
                     break;
             }
-        
+            pauseSystem(sc);        
         } while (select !=4);
         sc.close();
     }
