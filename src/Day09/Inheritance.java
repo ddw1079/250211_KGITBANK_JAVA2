@@ -1,4 +1,4 @@
-package Day08;
+package Day09;
 
 // ---- Inherite (상속) ----
 // 물려받는다는 의미. 클래스간의 관계를 나타낸다.
