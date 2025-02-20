@@ -86,11 +86,7 @@ public class StaticMember_Practice {
     static void printMsg(String printMsg) {
         System.out.println(printMsg);
     }
-
-    static void garbageCollect() {
-        System.gc();
-    }
-
+    
     public static void main(String[] args) {
         Employee[] employees = new Employee[100];
         int select, age, salary;
