@@ -22,14 +22,25 @@ package Day09;
 // 자식 클래스의 객체를 선언할 때, 부모 클래스의 생성자를 먼저 호출하고 이후 자식 클래스의 생성자를 호출함.
 //  - Stack에 부모 클래스의 영역에 대한 공간을 먼저 할당하고 이후 그 공간 안에서 자식 클래스의 공간을 할당하기 때문.
 // 
-// 
-// 
+
+// ---- super 키워드 ----
+// 부모 클래스를 참조하는 키워드
+// 이름이 중복되는 부모 클래스의 멤버에 접근할 수 있음.
+// 이름이 중복되지 않으면 super 를 생략해도 되지만, 명시적으로 작성하는 경우 있음.
+// 사용법은 this 키워드와 비슷함.
+// super 키워드 원형: super.멤버;
 // 
 
+// ---- super 메소드 ----
+// 부모 클래스의 생성자를 호출할 때 사용하는 메소드
+// 자동으로 호출할 수 있는 부모 클래스의 생성자가 있으면 생략해도 되지만
+// 그렇지 않으면 명시적으로 호출해주어야 함.
+// this 메소드처럼 명시 시 객체 공간 할당 규칙에 의하여 자식 클래스의 맨 위로 와야함.
+// 
 
 class Person {
-    String name;
-    int age;
+    private String name;
+    private int age;
 
     Person(String name, int age) {
         this.name = name;
@@ -38,42 +49,46 @@ class Person {
     }
 
     void eat (String food) {
-        System.out.println(food+"를 먹는다.");
+        System.out.println(age + "세의 " + name + "는 " + food+"를 먹는다.");
     }
     
     void sleep () {
-        System.out.println("잠을 자다.");
+        System.out.println(age + "세의 " + name + "는 잠을 잔다.");
     }
 
 }
 
 class Worker extends Person{
-    int eid;
+    private int eid;
 
     Worker(String name, int age, int eid) {
         super(name, age);
+        // super.name = name;
+        // super.age = age;
 
         this.eid = eid;
         System.out.println("--- Worker Constructor Invoked ---");
     }
 
     void work () {
-        System.out.println("일을 하다.");
+        System.out.println(eid + "는 일을 한다.");
     }
 }
 
 class Student extends Person {
-    int sid;
+    private int sid;
 
     Student(String name, int age, int sid) {
         super(name, age);
+        // super.name = name;
+        // super.age = age;
 
         this.sid = sid;
         System.out.println("--- Student Constructor Invoked ---");
     }
 
     void study () {
-        System.out.println("공부를 하다.");
+        System.out.println(sid + "는 공부를 한다.");
     }
     
 }
