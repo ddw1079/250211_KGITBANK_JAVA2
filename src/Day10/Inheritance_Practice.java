@@ -54,7 +54,7 @@ class Ebook extends Book {
 
     void getBookInfo() {
         super.getBookInfo();
-        System.out.println("보안 키: " + SecurityCode);
+        System.out.println("- 보안 키: " + SecurityCode);
     }
 }
 
@@ -106,11 +106,12 @@ public class Inheritance_Practice {
                     System.out.println("등록할 책의 종류 번호를 입력하십시오: 1. 일반 책; 2. 전자 책");
                     System.out.print("입력: ");
                     scInt = sc.nextInt();
+                    sc.nextLine();
 
                     if(scInt == 1) {
                         System.out.println("일반 책을 등록합니다.");
                         System.out.print("책 제목: ");
-                        name = sc.next();
+                        name = sc.nextLine();
                         System.out.print("책 가격: ");
                         price = sc.nextInt();
                         for (int i = 0; i < books.length; i++) {
@@ -122,11 +123,13 @@ public class Inheritance_Practice {
                     } else if(scInt == 2) {
                         System.out.println("전자 책을 등록합니다.");
                         System.out.print("책 제목: ");
-                        name = sc.next();
+                        name = sc.nextLine();
                         System.out.print("책 가격: ");
                         price = sc.nextInt();
+                        // 입력버퍼 초기화
+                        sc.nextLine();
                         System.out.print("책 보안 키: ");
-                        secCodeString = sc.next();
+                        secCodeString = sc.nextLine();
                         for (int i = 0; i < ebooks.length; i++) {
                             if (ebooks[i] == null) {
                                 ebooks[i] = new Ebook(name, price, secCodeString);
@@ -144,11 +147,12 @@ public class Inheritance_Practice {
                     for (int i = 0; i < books.length; i++) {
                         if (books[i] != null) {
                             books[i].getBookInfo();
+                            System.out.println();
                             tempInt++;
                         }
                     }
-                    System.out.println("일반 책 개수: " + tempInt + " / " + books.length);
-                    System.out.println();
+                    System.out.println("\n => 일반 책 개수: " + tempInt + " / " + books.length);
+                    System.out.println("\n");
                     System.out.println("-- 전자 책 --");
                     // book 개수 체크용
                     tempInt = 0;
@@ -158,7 +162,7 @@ public class Inheritance_Practice {
                             tempInt++;
                         }
                     }
-                    System.out.println("전자 책 개수: " + tempInt + " / " + books.length);
+                    System.out.println("\n => 전자 책 개수: " + tempInt + " / " + books.length);
                     break;
                 case 3:
                     System.out.println("책 관리 프로그램을 종료합니다.");
