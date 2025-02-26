@@ -80,6 +80,7 @@ class Person {
     }
         
     public class StaticMember {
+        @SuppressWarnings("unused")
         public static void main(String[] args) {
             
             Person p1 = new Person("철수", 24);

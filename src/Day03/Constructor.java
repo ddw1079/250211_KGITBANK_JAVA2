@@ -38,6 +38,7 @@ class Data {
 class Data2 {
     // Default 생성자
     // Data2() {}
+    @SuppressWarnings("unused")
     private int data;
     Data2(int data) {
         this.data = data;

@@ -74,6 +74,10 @@ public class Inheritance_Practice {
         System.out.print("입력: ");
     };
 
+    static final void clearInputBuffer(Scanner sc) {
+        sc.nextLine();
+    }
+
     static void clearConsole() {
         for (int i = 0; i < 40; i++) {
             System.out.println();
