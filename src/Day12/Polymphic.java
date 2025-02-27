@@ -6,9 +6,6 @@ package Day12;
 // 즉, 부모 클래스를 선언할 때 자식 클래스의 타입으로 공간을 할당 받을 수 있다.
 // 하지만 자식 클래스의 타입으로 공간을 할당했음에도 불구하고 자식 클래스의 메소드는 사용할 수 없다!
 // 
-// 
-// 
-// 
 
 class A {
     A() {
@@ -27,6 +24,7 @@ class B extends A {
 }
 
 public class Polymphic {
+    @SuppressWarnings("unused")
     public static void main(String[] args) {
         A a = new B();
         // a.show(); // <-- 이렇게는 사용할 수 없다! (The method show() is undefined for the type A)
