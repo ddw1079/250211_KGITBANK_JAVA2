@@ -94,10 +94,6 @@ class Manager extends Employee {
         super.showInfo();
         System.out.println("담당 프로젝트: " + prjName);
     }
-
-    // public static int getManagerCount() {
-    // return managerCount;
-    // }
 }
 
 // ------------ 메인 클래스 ------------
@@ -274,6 +270,7 @@ public class Polymphic_Practice {
                                 employees[select].doWork();
                                 break;
                             case 2:
+                                System.out.println(employees[select].getEmployeeName() + " 가 " + employees[select].getDeparture() + " 의 회의를 소집합니다.");
                                 for (int i = 0; i < Employee.getEmployeeCount(); i++) {
                                     if (employees[i].getDeparture().equals(employees[select].getDeparture())) {
                                         System.out.print(employees[i].getEmployeeName() + " ");
